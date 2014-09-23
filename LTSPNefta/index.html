@@ -1,0 +1,63 @@
+<html>
+<head>
+	<title>T&iacute;tulo del trabajo</title>
+</head>
+<body>
+<div style='display:table-row; padding: 10px;'>
+  <div style='float: left; width=20%; padding:10px;'>
+  <img src='./files/logo.png'/>
+  </div>
+  <div style='float: left;padding:10px'>
+  <ul>
+    <li><b>M&oacute;dulo:</b> <i>Sistemas Operativos</i></li>
+    <li><b>T&iacute;tulo del trabajo</b> <i>Instalacion de Servidor y Cliente LTSP</i></li>
+    <li><b>Componentes del grupo:</b> <i>Neftali Rodriguez</i></li>
+    <li><b>Curso Acad&eacute;mico:</b> <i>2014/2015</i></li>
+    <li><b>Fecha de entrega:</b> <i>26 de agosto de 2014</i></li>
+  </ul>
+  </div>
+</div>
+<div style='float: clear;background-color: #eeeeee; border:2px solid; border-radius:10px; padding: 10px;'>
+<a href='#bloque1'>Configuracion del Servidor</a> | <a href='#bloque2'>Configuracion VirtualBox</a> | <a href='#final'>Cliente</a>
+</div>
+<center><p>En esta actividad vamos a configurar un servidor LTSP para la conexion de un cliente ligero a traves de este servidor</p></center>
+<h1><a id='bloque1'><center>Configuracion del Servidor</center></a></h1>
+<center><p>Lo primero que haremos despues de instalar la maquina, sera cambiar el nombre de el equipo y del del dominio.
+Esto lo podremos hacer mediante entorno grafico o moficando los archivos <b>/etc/hosts y /etc/hostname</b></p></center>
+<br>
+<br>
+<center><img src="./files/1.png" ALT="Nombre de equipo y Dominio" ALIGN="middle"></center>
+<br>
+<br>
+<center><p>Lo siquiente que haremos sera crear 3 usuarios, llamados <b>apellido1, apellido2, apellido3</b>. Pondremos la misma contraseña para los 3.</p></center>
+<br>
+<br>
+<center><img src="./files/2.png" ALT="Usuarios" Align="middle"></center>
+<br>
+<br>
+<center><p>Ahora abrimos una consola como superusuario e instalamos el servidor LTSP </p></center>
+<table>
+<left><img src="./files/3.png" ALT="Instalando LTSP" height=360 width=700 align="middle"></left>
+<right><img src="./files/4.png" ALT="Instalando LTSP" height=360 width=700 align="middle"></right>
+</table>
+<br>
+<br>
+<center><p>Por ultimo, instalamos el servidor SSH. En mi caso, ya venia instalado </p></center>
+<br>
+<br>
+<center><img src="./files/5.png" ALT="SSH" align="middle"</center>
+<br>
+<br>
+<h1><a id='bloque2'>Configuracion VirtualBox</a></h1>
+<p>Ahora configuraremos las tarjetas de red de las maquinas virtuales para que el cliente pueda arrancar directamente desde el servidor</p>
+<table><left><img src="./files/6.png" ALT="Red Externa Server" height=400 width=700 align="middle"></left>
+<right><img src="./files/7.png" ALT="Red Interna Server" height=400 width=700 align="middle"></right></table>
+<br>
+<br>
+<h1><a id='final'>Cliente</a></h1>
+<p>Por ultimo, desactivamo el disco duro y el lector de CD en la maquina virtual cliente y posteriormente arrancamos la maquina.
+Si todo ha quedado bien configurado deberia aparecer la pantalla de login siguiente.</p>
+<center><img src="./files/8.png" ALT="Login Cliente" align="middle"></center>
+<p>Como aclaracion final, y tras varios intentos, la unica manera por la que consegui loguear en el cliente fue cambiando la sesion a Openbox.</p>
+</body>
+</html>
