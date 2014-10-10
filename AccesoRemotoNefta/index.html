@@ -103,13 +103,23 @@ y colocaremos usuario y contraseña. Tras varios intentos y probando varios modu
 
 <h1><a id='bloque4'>RemoteAPP</a></h1>
 
-<center><p>Para configurar RemoteAPP, primero nos dirigiremos a Herramientas administrativas/Terminal Services y desde ahí <br> a Administrador de RemoteAPP de TS. Una vez ahí hacemos click en Agregar programas RemoteApp.</p></center>
+<center><p>Para configurar RemoteAPP, primero nos dirigiremos a Herramientas administrativas/Terminal Services y desde ahí <br> a Administrador de RemoteAPP de TS. Nos dirigimos a configuración de RemoteAPP y colocamos el en la siguiente pantalla colocamos el nombre del servidor.</p></center>
 <center><td><img  src='./files/imagenes/rmtpp/1.png'/></td></center><br>
-<center><p>Seleccionamos el programa de la lista que queremos ejecutar de forma remota o pulsamos Examinar para buscarlo.</p></center>
-<center><td><img  src='./files/imagenes/rmtpp/4.png'/></td></center><br>
-<center><p>Si pulsamos en Propiedades podemos cambiar algunas opciones como el nombre que aparecerá, la ubicación <br> o si permitirá linea de comandos.</p></center>
+<center><p>Ahora en la pantalla principal, pulsaremos sobre Agregar programas RemoteAPP, se abrirá un nuevo asistente. <br> En el prodremos seleccionar el programa o programas que queremos ejecutar de forma remota desde la maquina cliente. Seleccionamos el que queramos y pulsamos sobre siguiente.</p></center>
+<center><td><img  src='./files/imagenes/rmtpp/2.png'/></td></center><br>
+<center><p>Revisamos que la configuración sea la correcta y finalizamos.</p></center>
 <center><td><img  src='./files/imagenes/rmtpp/3.png'/></td></center><br>
-
-<center><p>De aquí en adelante esta parte de la práctica esta sin terminar, no me dio tiempo de acabarla.</p></center>
+<center><p>Nuevamente en la pantalla principal de RemoteAPP, veremos el programa que hemos seleccionado. <br> Haremos click derecho sobre el y pulsaremos sobre Crear archivo .rdp y se abrirá otro nuevo asistente.</p></center><br>
+<center><td><img  src='./files/imagenes/rmtpp/4.png'/></td></center><br>
+<center><p>En este nuevo asistente podremos configurar el paquete de RemoteAPP. <br> Si requerirá autenticación del servidor para ejecutarse, si se desea colocar un certificado al paquete para firmarlo o la puerta de enlace.</p></center>
+<center><td><img  src='./files/imagenes/rmtpp/5.png'/></td></center><br>
+<center><p>En este caso,configuraremos la IP del servidor, tambien desactivaremos la autenticación del servidor.</p></center>
+<center><td><img  src='./files/imagenes/rmtpp/6.png'/></td></center><br>
+<center><p>Una vez hechos los cambios, pulsaremos en siguiente y luego en finalizar para terminar la creación del paquete.</p></center>
+<center><td><img  src='./files/imagenes/rmtpp/8.png'/></td></center><br>
+<center><p>Pasamos el paquete "Calculadora(1).rdp" a la maquina cliente y lo ejecutamos. Nos aparecerá el siguiente mensaje avisandonos de que el paquete podría <br> resultar dañino, ya que al no estar firmado no se puede identificar a su editor. Pulsamos en conectar. </p></center>
+<center><td><img  src='./files/imagenes/rmtpp/9.png'/></td></center><br>
+<center><p>Se abrirá el programa que hayamos seleccionado remotamente desde la maquina del servidor.</p></center>
+<center><td><img  src='./files/imagenes/rmtpp/10.png'/></td></center><br>
 </body>
 </html>
