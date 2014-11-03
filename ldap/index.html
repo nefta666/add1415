@@ -1,0 +1,68 @@
+<html>
+<head>
+<title>LDAP</title>
+<meta http-equiv="content-type" content="text/html;charset=utf-8" />
+</head>
+<body>
+<div style='display:table-row; padding: 10px;'>
+<div style='float: left; width=20%; padding:10px;'>
+<img src='./files/logo.png'/>
+</div>
+<div style='float: left;padding:10px'>
+<ul>
+<li><b>M&oacute;dulo:</b> <i>Sistemas Operativos</i></li>
+<li><b>T&iacute;tulo del trabajo</b> <i>SSH</i></li>
+<li><b>Componentes del grupo:</b> <i>Neftalí Rodríguez Rodríguez</i></li>
+<li><b>Curso Acad&eacute;mico:</b> <i>2014/2015</i></li>
+<li><b>Fecha de entrega:</b> <i>7 de Octubre de 2014</i></li>
+</ul>
+</div>
+</div>
+<div style='float: clear;background-color: #eeeeee; border:2px solid; border-radius:10px; padding: 10px;'>
+<a href='#bloque1'>Instalación LDAP</a> | <a href='#bloque2'>Introducción Datos en LDAP</a> 
+</div>
+<center><h1><a id='bloque1'>Instalación LDAP</a></h1></center>
+<center><p>Configuramos el equipo en el que usaremos LDAP con IP estática.</p></center>
+<center><td><img src='./files/imagenes/1.png'/></td></center><br>
+<center><p>Instalamos LDAP y las utilidades de LDAP desde apt-get. El paquete "ldap.4.2 util", no se encontraba disponible en apt-get y fue necesario instalar una versión posterior mediante Synaptic. Luego Usamos el comando "dpkg-reconfigure slapd" para entrar en el asistente de configuración de LDAP</p></center>
+<center><td><img src='./files/imagenes/3.png'/></td></center><br>
+<center><p>Durante la instalación de LDAP le diremos que no queremos omitir la configuración del servidor.</p></center>
+<center><td><img src='./files/imagenes/4.png'/></td></center><br>
+<center><p>El siguiente paso será introducir el nombre de dominio que se usará para LDAP</p></center>
+<center><td><img src='./files/imagenes/5.png'/></td></center><br>
+<center><p>Introduciremos una contraseña de administrador en el siguiente paso.</p></center>
+<center><td><img src='./files/imagenes/7.png'/></td></center><br>
+<center><p>En caso de que nos pregunte si queremos mover la base de datos antigua, le diremos que si.</p></center>
+<center><td><img src='./files/imagenes/10.png'/></td></center><br>
+<center><p>Luego, el asistente nos preguntará si deseamos activar el protocolo LDAPv2. Marcaremos que no, ya que está obsoleto y no lo vamos a usar.</p></center>
+<center><td><img src='./files/imagenes/11.png'/></td></center><br>
+<center><p>El último paso del asistente, nos preguntará que hacer con la base de datos en caso de que se elimine el paquete slapd. En nuestro caso, hemos marcado la opción de no borrar.</p></center>
+<center><td><img src='./files/imagenes/9.png'/></td></center><br>
+
+<center><p>Ahora que ya se ha instalado LDAP y el resto de utilidades, vamos a comprobar si se para y arranca con normalidad. </p></center>
+<center><td><img src='./files/imagenes/12.png'/></td></center><br>
+<center><p>Para finalizar la instalación, instalamos los paquetes de Apache y PHP que no habíamos instalado previamente.</p></center>
+<center><td><img src='./files/imagenes/13.png'/></td></center><br>
+
+<center><h1><a id='bloque2'>Introducción Datos en LDAP</a></h1></center>
+
+
+<center><p>Comprobamos que tenemos acceso al directorio de LDAP introduciendo en el navegador la dirección "localhost/phpldapadmin"</p></center>
+<center><td><img src='./files/imagenes/14.png'/></td></center><br>
+<center><p>Para cambiar el nombre del directorio, que aparece como "dc=example dc=com" modificaremos el archivo "/etc/phpldapadmin/config.php".
+En la linea 300 del archivo cambiamos los valores por nuestro dominio. </p></center>
+<center><td><img src='./files/imagenes/15.png'/></td></center><br>
+<center><p>Lo siguiente será introducir datos en LDAP, para ello descargaremos JXplorer desde Synaptic.</p></center>
+<center><td><img src='./files/imagenes/16.png'/></td></center><br>
+<center><td><img src='./files/imagenes/17.png'/></td></center><br>
+<center><p>Una vez dentro de JXplorer, dentro de nuestro directorio, crearemos las unidades organizativas "usuarios" y "grupos".</p></center>
+<center><td><img src='./files/imagenes/18.png'/></td></center><br>
+<center><p>Dentro de groups, crearemos otras dos unidades organizativas llamadas, "alumnos" y "profesores"</p></center>
+
+<center><td><img src='./files/imagenes/19.png'/></td></center><br>
+<center><p>Dentro de grupos, crearemos otras dos unidades organizativas llamadas, "alumnos" y "profesores"</p></center>
+<center><td><img src='./files/imagenes/20.png'/></td></center><br>
+<center><p>Por último, crearemos varios usuarios dentro de la unidad organizativa "users"</p></center>
+<center><td><img src='./files/imagenes/22.png'/></td></center><br>
+</body>
+</html>
