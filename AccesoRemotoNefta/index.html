@@ -1,0 +1,125 @@
+<html>
+<head>
+	<title>Acceso Remoto</title>
+	<meta http-equiv="content-type" content="text/html;charset=utf-8" />
+</head>
+<body>
+<div style='display:table-row; padding: 10px;'>
+  <div style='float: left; width=20%; padding:10px;'>
+  <img src='./files/logo.png'/>
+  </div>
+  <div style='float: left;padding:10px'>
+  <ul>
+    <li><b>M&oacute;dulo:</b> <i>Sistemas Operativos</i></li>
+    <li><b>T&iacute;tulo del trabajo</b> <i>Acceso Remoto</i></li>
+    <li><b>Componentes del grupo:</b> <i>Neftalí Rodríguez Rodríguez</i></li>
+    <li><b>Curso Acad&eacute;mico:</b> <i>2014/2015</i></li>
+    <li><b>Fecha de entrega:</b> <i>7 de Octubre de 2014</i></li>
+  </ul>
+  </div>
+</div>
+<div style='float: clear;background-color: #eeeeee; border:2px solid; border-radius:10px; padding: 10px;'>
+<a href='#bloque1'>RDP</a> | <a href='#bloque2'>VNC</a> | <a href='#bloque3'>Servidor de Terminales</a> | <a href='#bloque4'>RemoteAPP</a>
+</div>
+<center><h1><a id='bloque1'>RDP</a></h1></center>
+<center><p><strong>De Windows a Windows</strong></p></center>
+<center><p>Lo primero que haremos será configurar las ip's ambos equipos </p></center>
+<center><td><img  src='./files/imagenes/wwrdp/1.png'/></td></center><br>
+<center><td><img  src='./files/imagenes/wwrdp/2.png'/></td></center><br>
+<center><p>Comprobamos que efectivamente hay conexión incluso <br> podemos hacer ping entre las dos maquinas</p></center>
+<center><td><img  src='./files/imagenes/wwrdp/3.png'/></td></center><br>
+<center><p>Habilitamos las conexiones entrantes a escritorio remoto en la maquina que hara de servidor <br>
+ y desde la maquina que hara de cliente abrimos Escritorio Remoto. <br> Introducimos la IP del servidor y pulsamos en conectar</p></center>
+<center><td><img  src='./files/imagenes/wlrdp/1.png'/></td></center><br>
+<center><td><img  src='./files/imagenes/wwrdp/4.png'/></td></center><br>
+<center><p>Debería aparecer la siguiente pantalla, ponemos el nombre de usuario del servidor y pulsamos en Aceptar.</p></center>
+<center><td><img  src='./files/imagenes/wwrdp/5.png'/></td></center><br>
+<center><p>Cuando conecte veremos el equipo del servidor y se cerrara la sesion real del equipo remoto.</p></center>
+<center><td><img  src='./files/imagenes/wwrdp/7.png'/></td></center><br>
+
+<center><p><strong>De Linux a Windows</strong></p></center>
+<center><p>Lo primero que haremos será habilitar las conexiones entrantes para Escritorio Remoto</p></center>
+<center><td><img  src='./files/imagenes/wlrdp/1.png'/></td></center><br>
+<center><p>Luego configuraremos en Windows la IP de forma estática</p></center>
+<center><td><img  src='./files/imagenes/wlrdp/2.png'/></td></center><br>
+<center><p>Hacemos lo mismo en Ubuntu</p></center>
+<center><td><img  src='./files/imagenes/wlrdp/3.png'/></td></center><br>
+<center><p>Añadimos al usuario Administrador al grupo de usuario de Acceso Remoto <br> (Aunque debería venir añadido por defecto)</p></center>
+<center><td><img  src='./files/imagenes/wlrdp/4.png'/></td></center><br>
+<center><p>Abrimos Remmina en Ubuntu y colocamos la IP de la maquina a la que nos vamos a conectar <br> y el nombre de usuario y contraseña.</p></center>
+<center><td><img  src='./files/imagenes/wlrdp/5.png'/></td></center><br>
+<center><p>Se abrira la sesión de ese usuario y se cerrara en la maquina remota.</p></center>
+<center><td><img  src='./files/imagenes/wlrdp/6.png'/></td></center><br>
+
+<center><p><strong>De Windows a Linux</strong></p></center>
+<center><p>Ya que las conexiones IP estan configuradas de pasos anteriores, lo primero que tendremos <br> que hacer sera instalar el servidor XRDP en Ubuntu para que desde Windows se pueda acceder a el.</p></center>
+<center><td><img  src='./files/imagenes/lwrdp/1.png'/></td></center><br>
+<center><p>Una vez el servidor XRDP esté instalado y puesto en marcha, desde Windows abriremos Escritorio remoto <br> y pondremos la IP de la maquina Ubuntu. En la ventana que aparecera seleccionaremos vnc=any en la pestaña de modulo <br> 
+y colocaremos usuario y contraseña. Tras varios intentos y probando varios modulos no se consiguió conectar.</p></center>
+<center><td><img  src='./files/imagenes/lwrdp/2.png'/></td></center><br>
+
+
+<h1><a id='bloque2'>VNC</a></h1>
+
+<center><p><strong>De Windows a Windows</strong></p></center>
+<center><p>Para empezar, primero deberemos instalar VNC (servidor y cliente al menos en una maquina), en ambas maquinas. <br> Ya que estamos usando las mismas maquinas que en casos anteriores, la configuración IP es la misma. <br> Una vez tengamos instalado VNC en ambas maquinas, ejecutamos el servidor en una de ellas y en la otra el cliente. <br> En la ventana que aparece a continuacíon colocamos la IP de la maquina que hace de servidor y pulsamos en Connect.</p></center>
+<center><td><img  src='./files/imagenes/wwvnc/2.png'/></td></center><br>
+<center><p>Si no da ningun error deberiamos ver la pantalla de la maquina servidor.</p></center>
+<center><td><img  src='./files/imagenes/wwvnc/1.png'/></td></center><br>
+
+<center><p><strong>De Linux a Linux</strong></p></center>
+<center><p>Descargamos e instalamos VNC en ambas maquinas Linux. <br> Configuramos IP estática para la nueva maquina que vamos a usar.<br> Ejecutamos el servidor VNC y cambiamos a la otra máquina virtual.</p></center>
+<center><td><img  src='./files/imagenes/llvnc/1.png'/></td></center><br>
+<center><p>Ejecutamos el VNC Viewer, colocamos la IP de la máquina que ejerce de servidor y pulsamos en Connect.</p></center>
+<center><td><img  src='./files/imagenes/llvnc/2.png'/></td></center><br>
+
+
+
+<h1><a id='bloque3'>Servidor de Terminales</a></h1>
+
+<center><p><strong>En Windows</strong></p></center>
+<center><p>Lo primero que haremos será dirigirnos a Administrar el Servidor, y desde ahí a Agregar funciones. <br> Desde ahí seleccionamos Terminal Services y continuamos.</p></center>
+<center><td><img  src='./files/imagenes/wts/1.png'/></td></center><br>
+<center><p>En la siguiente pantalla, marcamos las dos primeras opciones y continuamos con la instalación.</p></center>
+<center><td><img  src='./files/imagenes/wts/2.png'/></td></center><br>
+<center><p>Como no vamos a requerir seguridad para la práctica, marcamos la opción no requerir autenticación a nivel de red.</p></center>
+<center><td><img  src='./files/imagenes/wts/3.png'/></td></center><br>
+<center><p>Nos saltaremos la pantalla de la licencia y marcamos Configurar mas adelante.</p></center>
+<center><td><img  src='./files/imagenes/wts/4.png'/></td></center><br>
+<center><p>Como no trabajamos con dominios, esta pantalla la dejaremos como esta y finalizamos la instalación.</p></center>
+<center><td><img  src='./files/imagenes/wts/5.png'/></td></center><br>
+<center><p>Una vez finalizada la instalación de Terminal Services, crearemos dos usuarios locales y los añadiremos <br> al grupo Usuarios de escritorio remoto.</p></center>
+<center><td><img  src='./files/imagenes/wts/6.png'/></td></center><br>
+<center><p>Lo siguiente lo haremos ya desde Windows 7. Abriremos Escritorio remoto y colocaremos la IP de la máquina de Windows 2008. <br> Al darle a Conectar debería aparecer la siguiente pantalla.</p></center>
+<center><td><img  src='./files/imagenes/wts/7.png'/></td></center><br>
+<center><p>Pulsamos en Si y se no abrirá la pantalla de inicio de sesión de usuario. Iniciaremos sesión con uno de los <br> que acabamos de crear en Windows 2008.</p></center>
+<center><td><img  src='./files/imagenes/wts/8.png'/></td></center><br>
+
+<center><p><strong>En Linux</strong></p></center>
+<center><p>Desde Linux, como ya tenemos del caso previo todo configurado, solo tendremos que abrir Remmani <br> y colocar la IP de la máquina Windows 2008, nombre de usuario y contraseña.</p></center>
+<center><td><img  src='./files/imagenes/lts/1.png'/></td></center><br>
+<center><p>Pulsamos en Conectar y debería aparecer la pantalla de la máquina windows 2008.</p></center>
+<center><td><img  src='./files/imagenes/lts/4.png'/></td></center><br>
+
+<h1><a id='bloque4'>RemoteAPP</a></h1>
+
+<center><p>Para configurar RemoteAPP, primero nos dirigiremos a Herramientas administrativas/Terminal Services y desde ahí <br> a Administrador de RemoteAPP de TS. Nos dirigimos a configuración de RemoteAPP y colocamos el en la siguiente pantalla colocamos el nombre del servidor.</p></center>
+<center><td><img  src='./files/imagenes/rmtpp/1.png'/></td></center><br>
+<center><p>Ahora en la pantalla principal, pulsaremos sobre Agregar programas RemoteAPP, se abrirá un nuevo asistente. <br> En el prodremos seleccionar el programa o programas que queremos ejecutar de forma remota desde la maquina cliente. Seleccionamos el que queramos y pulsamos sobre siguiente.</p></center>
+<center><td><img  src='./files/imagenes/rmtpp/2.png'/></td></center><br>
+<center><p>Revisamos que la configuración sea la correcta y finalizamos.</p></center>
+<center><td><img  src='./files/imagenes/rmtpp/3.png'/></td></center><br>
+<center><p>Nuevamente en la pantalla principal de RemoteAPP, veremos el programa que hemos seleccionado. <br> Haremos click derecho sobre el y pulsaremos sobre Crear archivo .rdp y se abrirá otro nuevo asistente.</p></center><br>
+<center><td><img  src='./files/imagenes/rmtpp/4.png'/></td></center><br>
+<center><p>En este nuevo asistente podremos configurar el paquete de RemoteAPP. <br> Si requerirá autenticación del servidor para ejecutarse, si se desea colocar un certificado al paquete para firmarlo o la puerta de enlace.</p></center>
+<center><td><img  src='./files/imagenes/rmtpp/5.png'/></td></center><br>
+<center><p>En este caso,configuraremos la IP del servidor, tambien desactivaremos la autenticación del servidor.</p></center>
+<center><td><img  src='./files/imagenes/rmtpp/6.png'/></td></center><br>
+<center><p>Una vez hechos los cambios, pulsaremos en siguiente y luego en finalizar para terminar la creación del paquete.</p></center>
+<center><td><img  src='./files/imagenes/rmtpp/8.png'/></td></center><br>
+<center><p>Pasamos el paquete "Calculadora(1).rdp" a la maquina cliente y lo ejecutamos. Nos aparecerá el siguiente mensaje avisandonos de que el paquete podría <br> resultar dañino, ya que al no estar firmado no se puede identificar a su editor. Pulsamos en conectar. </p></center>
+<center><td><img  src='./files/imagenes/rmtpp/9.png'/></td></center><br>
+<center><p>Se abrirá el programa que hayamos seleccionado remotamente desde la maquina del servidor.</p></center>
+<center><td><img  src='./files/imagenes/rmtpp/10.png'/></td></center><br>
+</body>
+</html>

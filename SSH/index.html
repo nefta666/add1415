@@ -1,0 +1,124 @@
+<html>
+<head>
+<title>SSH</title>
+<meta http-equiv="content-type" content="text/html;charset=utf-8" />
+</head>
+<body>
+<div style='display:table-row; padding: 10px;'>
+<div style='float: left; width=20%; padding:10px;'>
+<img src='./files/logo.png'/>
+</div>
+<div style='float: left;padding:10px'>
+<ul>
+<li><b>M&oacute;dulo:</b> <i>Sistemas Operativos</i></li>
+<li><b>T&iacute;tulo del trabajo</b> <i>SSH</i></li>
+<li><b>Componentes del grupo:</b> <i>Neftalí Rodríguez Rodríguez</i></li>
+<li><b>Curso Acad&eacute;mico:</b> <i>2014/2015</i></li>
+<li><b>Fecha de entrega:</b> <i>7 de Octubre de 2014</i></li>
+</ul>
+</div>
+</div>
+<div style='float: clear;background-color: #eeeeee; border:2px solid; border-radius:10px; padding: 10px;'>
+<a href='#bloque1'>Preparativos</a> | <a href='#bloque2'>Instalación Basica</a> | <a href='#bloque3'>Personalización del prompt Bash</a> | <a href='#bloque4'>Autenticación mediante claves públicas</a> | <a href='#bloque5'>Uso de SSH como túnel para X</a> | <a href='#bloque6'>Aplicaciones Windows nativas</a> <br>| <a href='#bloque7'>Aplicaciones Windows nativas</a> | <a href='#bloque7'>Aplicaciones Windows nativas</a> | <a href='#bloque7'>Restricciones de uso</a> 
+</div>
+<center><h1><a id='bloque1'>Preparativos</a></h1></center>
+<center><p>Para empezar configuraremos las Ip's en las maquinas Servidor y cliente de Linux</p></center>
+<center><td><img src='./files/imagenes/0.png'/></td></center><br>
+<center><td><img src='./files/imagenes/1.png'/></td></center><br>
+<center><p>También configuraremos la IP de forma estática en una maquina cliente de Windows.</p></center>
+<center><td><img src='./files/imagenes/3.png'/></td></center><br>
+<center><p>Luego, modificaremos el nombre de los equipos y los añadiremos a un dominio, en este caso el dominio "rodriguez".</p></center>
+<center><td><img src='./files/imagenes/4.png'/></td></center><br>
+<center><td><img src='./files/imagenes/5.png'/></td></center><br>
+<center><p>Después de esto, modificaremos los archivos "hosts" de estos equipos para añadir los nombres de ambos equipos y que se reconozcan.</p></center>
+<center><td><img src='./files/imagenes/7.png'/></td></center><br>
+<center><td><img src='./files/imagenes/10.png'/></td></center><br>
+<center><td><img src='./files/imagenes/11.png'/></td></center><br>
+
+<center><p>Luego, crearemos 4 usuarios en la maquina servidor. Con los nombres "remoteuser" 1,2,3 y 4.</p></center>
+<center><td><img src='./files/imagenes/9.png'/></td></center><br>
+
+<center><h1><a id='bloque2'>Instalación Basica</a></h1></center>
+
+<center><p>Abriremos una terminal en el servidor como superusuario y escribiremos en comando que se ve a continuación, con el instalaremos el servidor ssh.</p></center>
+<center><td><img src='./files/imagenes/12.png'/></td></center><br>
+<center><p>Realizamos la primera conexión via SSH desde el cliente.</p></center>
+<center><td><img src='./files/imagenes/13.png'/></td></center><br>
+<center><p>Comprobamos el archivo known_hosts para verificar que se ha realizado el intercambio de claves.</p></center>
+<center><td><img src='./files/imagenes/14.png'/></td></center><br>
+<center><p>Ahora, generamos una par de nuevas claves desde la maquina servidor.</p></center>
+
+<center><td><img src='./files/imagenes/15.png'/></td></center><br>
+
+<center><p>Luego, reiniciaremos el servicio, conectaremos de nuevo desde el cliente y comprobaremos de nuevo el archivo known_hosts. <br>
+Debería haberse añadido la nueva clave pública que hemos generado.</p></center>
+
+<center><td><img src='./files/imagenes/16.png'/></td></center><br>
+<center><p>En mi caso dió un error, y tuve que borrar el contenido de el archivo known_hosts para que reconociera la nueva clave.</p></center>
+<center><td><img src='./files/imagenes/17.png'/></td></center><br>
+<center><p>La siguiente captura es después de borrar el contenido del archivo known_hosts y realizar de nuevo la conexión.</p></center>
+<center><td><img src='./files/imagenes/18.png'/></td></center><br>
+
+<center><h1><a id='bloque3'>Personalización del prompt Bash</a></h1></center>
+<center><p>Ahora nos dirigiremos a modificar el archivo "bashrc" dentro del home del usuario remoto 1 añadiendo las lineas que se muestran a continuación. <br>
+Los valores numéricos varían dependiendo de los colores que se quieran usar.</p></center>
+<center><td><img src='./files/imagenes/19.png'/></td></center><br>
+<center><p>Ahora conectaremos con ese usuario al servidor, al realizarse la conexión SSH el prompt cambiará al color que hemos seleccionado.</p></center>
+<center><td><img src='./files/imagenes/20.png'/></td></center><br>
+
+<center><h1><a id='bloque4'>Autenticación mediante claves públicas</a></h1></center>
+
+
+<center><p>Desde la maquina cliente generaremos un par de claves ("ssh-keygen -t rsa").<br>
+Ahora, pasaremos la clave pública del cliente al servidor usando el siguiente comando por SSH.</p></center>
+<center><td><img src='./files/imagenes/23.png'/></td></center><br>
+<center><p>Una vez el servidor tenga la clave pública del cliente en la lista de "authorized_keys", podremos conectar con ese cliente sin necesidad de contraseña.</p></center>
+
+<center><h1><a id='bloque5'>Uso de SSH como túnel para X</a></h1></center>
+
+<center><p>Usaremos un programa que el cliente no tenga instalado.</p></center>
+
+<center><td><img src='./files/imagenes/25.png'/></td></center><br>
+<center><p>Desde el servidor, modificaremos el archivo "/etc/ssh/sshd_config" y activaremos la opción "X11Forwarding"</p></center>
+
+<center>Ahora nos dirigimos nuevamente a la maquina cliente, e introducimos el comando que se muestra a continuación y el nombre del programa que deseamos abrir.<p></p></center>
+<center><td><img src='./files/imagenes/27.png'/></td></center><br>
+
+<center><h1><a id='bloque6'>Aplicaciones Windows nativas</a></h1></center>
+
+
+<center><p>Para empezar, desde el servidor instalaremos Wine con el comando "apt-get install wine".</p></center>
+<center><td><img src='./files/imagenes/28.png'/></td></center><br>
+<center><p>Ahora conectaremos desde el cliente, como hicimos con el Geany, pero en su lugar al final del comando escribiremos "notepad". Debería abrirse el bloc de notas de Windows.</p></center>
+
+<center><h1><a id='bloque6'>Restricciones de uso</a></h1></center>
+
+
+<center><td><img src='./files/imagenes/29.png'/></td></center><br>
+<center><p>Para aplicar restricciones de uso a usuarios para SSH, nos dirigiremos a modificar el archivo "/etc/ssh/sshd_config".<br>
+Ya que le queremos restringir el acceso al usuario 2, añadiremos la linea AllowUsers con todos los usuarios exceptuando al usuario 2.</p></center>
+<center><td><img src='./files/imagenes/30.png'/></td></center><br>
+<center><p>Si intentamos conectar via SSH desde el cliente con el usuario 2, no dirá que tenemos acceso denegado.</p></center>
+<center><td><img src='./files/imagenes/31.png'/></td></center><br>
+
+
+<center><p>Ahora crearemos un nuevo tipo de restricción via IP. <br>
+Para ello, modificaremos el archivo "/etc/host.allow". En el añadiremos las IP que se podrán conectar a nuestro servidor.</p></center>
+<center><td><img src='./files/imagenes/32.png'/></td></center><br>
+<center><p>Para denegar las demás direcciones IP, modificaremos el archivo "etc/host.deny", en el colocaremos la linea ALL:ALL.</p></center><br>
+<center><td><img src='./files/imagenes/33.png'/></td></center><br>
+<center>Ahora conectaremos desde el cliente autorizado para comprobar su funcionamiento.<p></p></center>
+<center><td><img src='./files/imagenes/34.png'/></td></center><br>
+
+
+<center><p>Por ultimo, crearemos una restricción sobre una aplicación. Para ello crearemos el grupo "remoteapps" y añadiremos al usuario "remoteuser4" al grupo.</p></center>
+<center><td><img src='./files/imagenes/35.png'/></td></center><br>
+<center><p>Buscamos el programa que queremos que solo ejecuten los miembros del grupo, hacemos propietario del programa al grupo y modificamos sus permisos para que los que no sean miembros del grupo no puedan ejecutarlo.</p></center>
+<center><td><img src='./files/imagenes/36.png'/></td></center><br>
+<center><p>Si intentamos ejecutarlo con "remoteuser1" nos dará el mensaje de Permiso denegado.</p></center>
+<center><td><img src='./files/imagenes/38.png'/></td></center><br>
+<center><p>Sin embargo, si lo ejecutamos con "remoteuser4" que si es miembro del grupo, podremos ejecutarlo.</p></center>
+<center><td><img src='./files/imagenes/39.png'/></td></center><br>
+
+</body>
+</html>
