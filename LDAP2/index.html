@@ -1,0 +1,59 @@
+<html>
+<head>
+<title>Autenticación en LDAP</title>
+<meta http-equiv="content-type" content="text/html;charset=utf-8" />
+</head>
+<body>
+<div style='display:table-row; padding: 10px;'>
+<div style='float: left; width=20%; padding:10px;'>
+<img src='./files/logo.png'/>
+</div>
+<div style='float: left;padding:10px'>
+<ul>
+<li><b>M&oacute;dulo:</b> <i>Sistemas Operativos</i></li>
+<li><b>T&iacute;tulo del trabajo</b> <i>LDAP2</i></li>
+<li><b>Componentes del grupo:</b> <i>Neftalí Rodríguez Rodríguez</i></li>
+<li><b>Curso Acad&eacute;mico:</b> <i>2014/2015</i></li>
+<li><b>Fecha de entrega:</b> <i>10 de Noviembre 2014</i></li>
+</ul>
+</div>
+</div>
+<div style='float: clear;background-color: #eeeeee; border:2px solid; border-radius:10px; padding: 10px;'>
+<a href='#bloque1'>Autenticación LDAP</a> 
+</div>
+<center><h1><a id='bloque1'>Autenticación LDAP</a></h1></center>
+<center><p>Una vez ya tengamos nuestro servidor LDAP instalado y configurado, en el cliente que queramos iniciar sesión mediante LDAP deberemos instalar la librería "pam-ldap".<br>
+ Esta permite a las aplicaciones autentificarse mediante un servidor LDAP.</p></center>
+<center><td><img src='./files/imagenes/1.png'/></td></center><br>
+<center><p>Durante el proceso de instalación se abrirá un asistente para que configuremos el servidor LDAP que vamos a utilizar.<br>
+En la primera pantalla nos pedirá la dirección IP del servidor LDAP y el puerto (por defecto es 389).<br>
+En la siguiente tendremos que introducir la base del directorio LDAP como se ve a continuación.</p></center>
+<center><td><img src='./files/imagenes/3.png'/></td></center><br>
+<center><p>A continuación, especificaremos la versión de LDAP a usar. En este caso la versión 3.</p></center>
+<center><td><img src='./files/imagenes/4.png'/></td></center><br>
+<center><p>En el siguiente paso, indicaremos que no es necesario autenticarse para acceder a la base de datos LDAP. Permitir acceso anónimo.</p></center>
+<center><td><img src='./files/imagenes/7.png'/></td></center><br>
+<center><p>Estableceremos una password para el accceso root a LDAP y continuamos para finalizar el asistente y la instalación.</p></center>
+<center><td><img src='./files/imagenes/7a.png'/></td></center><br>
+<center><p>Ahora entramos a configurar el archivo /etc/ldap.conf. Especificamos el directorio del servidor LDAP.</p></center>
+<center><td><img src='./files/imagenes/11.png'/></td></center><br>
+<center><p>Tambien, añadiremos estas lineas para que busque a los usuarios en el directorio de LDAP.</p></center>
+<center><td><img src='./files/imagenes/12.png'/></td></center><br>
+<center><p>Ahora añadiremos la linea "auth sufficient pam_ldap.so" al archivo /etc/pam.d/common-auth.<br>
+Esto sirve para que los servicios de nuestro sistema utilicen las librerías pam-ldap para autentificar al usuario.</p></center>
+<center><td><img src='./files/imagenes/13.png'/></td></center><br>
+<center><p>Luego añadiremos la linea "account sufficient pam_ldap.so" al archivo /etc/pam.d/common-account.<br>
+Con esto permitimos a los servicios del sistema comprueben la cuenta del usuario mediante las librerías pam-ldap.</p></center>
+<center><td><img src='./files/imagenes/14.png'/></td></center><br>
+<center><p>Tambien añadiremos la linea "session sufficient pam_ldap.so" al archivo /etc/pam.d/common-session.<br>
+Haciendo esto permitiremos a los servicios del sistema que obtenga los parametros de la sesión del usuario mediante las librerías pam-ldap.<br><br><br>
+	
+Por ultimo añadiremos la linea "password sufficient pam_ldap.so" al archivo /etc/pam.d/common-password.<br>
+Para permitir que los servicios del sistema puedan modificar la contraseña del usuario mediante las librerías pam-ldap.</p></center>
+<center><td><img src='./files/imagenes/15.png'/></td></center><br>
+<center><p>Una vez hayamos configurados todos los archivos en la maquina cliente, descargaremos Finger.</p></center>
+<center><td><img src='./files/imagenes/16.png'/></td></center><br>
+<center><p>Para terminar, abriremos una Terminal y en ella escribiremos "finger + nombredeusuarioldap"<br>
+<center><td><img src='./files/imagenes/17.png'/></td></center><br>
+</body>
+</html>
