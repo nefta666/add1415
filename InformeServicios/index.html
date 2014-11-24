@@ -1,0 +1,54 @@
+<html>
+<head>
+	<title>Creación de un Servicio</title>
+	<meta http-equiv="content-type" content="text/html;charset=utf-8" />
+	<meta name="Servicios" content="Geany 1.23.1" />
+</head>
+<body>
+<div style='display:table-row; padding: 10px;'>
+  <div style='float: left; width=20%; padding:10px;'>
+	<img src='./imagenes/logo.png'/></br></br></br>
+  </div>
+  <div style='float: left;padding:10px'>
+  <ul>
+
+    <li><b>Sistemas Operativos</b> 
+    <li><b>Creación de un Servicio</b> 
+    <li><b>Componentes del grupo:</b> <i>Neftalí</i></li>
+    <li><b>Curso Acad&eacute;mico:</b> <i>2014/2015</i></li>
+    <li><b>Fecha de entrega:</b> </li>
+  </ul>
+  </div>
+</div>
+<div style='float: clear;background-color: #eeeeee; border:2px solid; border-radius:10px; padding: 10px;'>
+<center><a href='#bloque1'>Creación del Servicio</a></center>
+</div>
+<center><h1><a id='bloque1'></a>Creacíon del Servicio</h1></center><br><br>
+<center><p>Para empezar crearemos el archivo .log donde el demonio escribirá la información</p></center>
+<center><img src='./imagenes/SistemV/1.png'/><center></br></br></br>
+<center><p>Luego en /usr/local/bin. Crearemos un nuevo archivo y en el pegaremos lo siguiente, este será nuestro demonio.</p></center>
+<center><img src='./imagenes/SistemV/2.png'/></center></br></br></br>
+<center><p>Le damos permisos de ejecución.</p></center>
+<center><img src='./imagenes/SistemV/3.png'/></center></br></br></br>
+<center><p>Lo ejecutamos en segundo plano, y luego comprobamos el archivo .log y comprobamos que el demonio esta escribiendo información en el.</p></center>
+<center><img src='./imagenes/SistemV/4.png'/></center></br></br></br>
+<center><p>ejecutamos el siguiente comando para parar el demonio.</p></center>
+<center><img src='./imagenes/SistemV/5.png'/></center></br></br></br>
+<center><p>Comprobamos que se ha detenido.</p></center>
+<center><img src='./imagenes/SistemV/6.png'/></center></br></br></br>
+<center><p></p>Ahora haremos una copia de el servicio /etc/init.d/skeleton y la llamamos /etc/init.d/kup</center>
+<center><img src='./imagenes/SistemV/7.png'/></center></br></br></br>
+<center><p>Adaptamos la copia de Skeleton a nuestro demonio Kupd </p></center>
+<center><img src='./imagenes/SistemV/8.png'/></center></br></br></br>
+<center><p>Le damos permisos de ejecución al nuevo servicio que acabamos de crear.</p></center>
+<center><img src='./imagenes/SistemV/9.png'/></center></br></br></br>
+<center><p>Creamos un enlace simbolico en RC2.d (el runlevel en el que estamos trabajando). Y comprobamos que al iniciar sesión arranca el servicio.</p></center>
+<center><img src='./imagenes/SistemV/009.png'/></center></br></br></br>
+<center><p></p>Creamos el archivo /etc/init/kup2.conf con el siguiente contenido.</center>
+<center><img src='./imagenes/Upstart/11.png'/></center></br></br></br>
+<center><p>Luego comprobaremos que el servicio kup funciona correctamente, parandolo y arrancandolo.</p></center>
+<center><img src='./imagenes/Upstart/12.png'/></center></br></br></br>
+
+
+</body>
+</html>
