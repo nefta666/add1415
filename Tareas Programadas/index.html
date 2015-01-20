@@ -1,0 +1,75 @@
+<html>
+<head>
+<title>Creación de un Servicio</title>
+<meta http-equiv="content-type" content="text/html;charset=utf-8" />
+<meta name="Servicios" content="Geany 1.23.1" />
+</head>
+<body>
+<div style='display:table-row; padding: 10px;'>
+<div style='float: left; width=20%; padding:10px;'>
+<img src='./imagenes/logo.png'/></br></br></br>
+</div>
+<div style='float: left;padding:10px'>
+<ul>
+<li><b>Sistemas Operativos</b>
+<li><b>Creación de un Servicio</b>
+<li><b>Componentes del grupo:</b> <i>Neftalí</i></li>
+<li><b>Curso Acad&eacute;mico:</b> <i>2014/2015</i></li>
+<li><b>Fecha de entrega:20/01/2015</b> </li>
+</ul>
+</div>
+</div>
+<div style='float: clear;background-color: #eeeeee; border:2px solid; border-radius:10px; padding: 10px;'>
+<center><a href='#bloque1'>Tareas programadas en Linux</a> | <a href='#bloque2'>Tareas programadas en Windows</center>
+</div>
+<center><h1><a id='bloque1'></a>Tareas programadas en Linux</h1></center><br><br>
+<center><p>Para crear la tarea diferida con "at" en Linux, abriremos un terminal y escribiremos "at + la hora a la que queremos que se ejecute el comando o script". <br>
+El prompt de la terminal cambiara a at> y a continuación escribiremos lo que queremos que se ejecute a la hora indicada.</p></center>
+<center><img src='./imagenes/1.png'/><center></br></br></br>
+<center><p>Para la tarea periódica, creamos el siguiente script y lo guardamos como "cron.sh" en el Escritorio</p></center>
+<center><img src='./imagenes/2.png'/></center></br></br></br>
+<center><p>Le damos permisos de ejecución.</p></center>
+<center><img src='./imagenes/3.png'/></center></br></br></br>
+<center><p>En la terminal escribimos "crontab -e" y modificamos la ultima linea para introducir los siguientes valores que significa: cada dos minutos, de todas las horas, <br>
+de todos los dias del mes, de todos los meses, de todos los dias de la semana, ejecuta el archivo a continuación.</p></center>
+<center><img src='./imagenes/4.png'/></center></br></br></br>
+<center><p>Comprobamos que se ejecuta periodicamente</p></center>
+<center><img src='./imagenes/5.png'/></center></br></br></br>
+<center><img src='./imagenes/6.png'/></center></br></br></br>
+<center><p>Para crear la tarea asincrona, haremos una copia del script "cron.sh" dentro de "/etc/cron.hourly". Con esto se debería ejecutar cada hora.</p></center>
+<center><img src='./imagenes/7.png'/></center></br></br></br>
+<center><h1><a id='bloque2'></a>Tareas programadas en Windows</h1></center><br><br>
+<center><p>La primera tarea que crearemos en Windows sera una diferida que ejecutará el apagado del equipo.</p></center>
+<center><img src='./imagenes/8.png'/></center></br></br></br>
+<center><p>Solo se ejecutará una vez. Hoy a las 08:30 am.</p></center>
+<center><img src='./imagenes/9.png'/></center></br></br></br>
+<center><img src='./imagenes/10.png'/></center></br></br></br>
+<center><p></p>Seleccionamos Iniciar un Programa</center>
+<center><img src='./imagenes/11.png'/></center></br></br></br>
+<center>En las opciones de programa o script escribiremos "shutdown" y en argumento "-s -f". La s para que apague el equipo y la f para que fuerce a los programas en ejecución a cerrarse.<p></p></center>
+<center><img src='./imagenes/12.png'/></center></br></br></br>
+<center><img src='./imagenes/13.png'/></center></br></br></br>
+<center><p>La tarea periodica que vamos a crear será un mensaje de bienvenida que el usuario verá cada vez que inicie su sesión.</p></center>
+<center><img src='./imagenes/14.png'/></center></br></br></br>
+<center>En el desencadenador escogeremos, "al iniciar sesión".<p></p></center>
+<center><img src='./imagenes/15.png'/></center></br></br></br>
+<center>La acción será mostrar un mensaje.<p></p></center>
+<center><img src='./imagenes/16.png'/></center></br></br></br>
+<center><p>Y por último colocaremos el titulo y el contenido de la ventana del mensaje que verá el usuario al iniciar sesión.</p></center>
+<center><img src='./imagenes/17.png'/></center></br></br></br>
+<center><p>Lo comprobamos reiniciando el equipo e iniciando sesión con dicho usuario.</p></center>
+<center><img src='./imagenes/18.png'/></center></br></br></br>
+<center><p>Por último, una tarea asíncrona que ejecute el programa CCleaner y realice una limpieza del sistema.</p></center>
+<center><img src='./imagenes/19.png'/></center></br></br></br>
+<center>La tarea se ejecutará en principio todos los días a las 09:15<p></p></center>
+<center><img src='./imagenes/20.png'/></center></br></br></br>
+<center><p>La acción será ejecutar el CClneaer con el argumento "/AUTO" para que al ejecutarse realice las tareas de mantenimiento automáticamente.</p></center>
+<center><img src='./imagenes/21.png'/></center></br></br></br>
+<center><p>En esta ventana no será necesario tocar ninguna opción.</p></center>
+<center><img src='./imagenes/22.png'/></center></br></br></br>
+<center>En la ventana de configuración marcamos que si la tarea no se ejecuta, se reinicie cada hora, hasta un máximo de 5 veces.<p></p></center>
+<center><img src='./imagenes/23.png'/></center></br></br></br>
+<center><p>Por último, esperamos a que se cumpla la hora estipulada en la tarea y comprobamos que se ejecuta.</p></center>
+<center><img src='./imagenes/24.png'/></center></br></br></br>
+</body>
+</html>
