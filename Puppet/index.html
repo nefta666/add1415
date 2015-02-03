@@ -1,0 +1,104 @@
+<html>
+<head>
+<title>Puppet</title>
+<meta http-equiv="content-type" content="text/html;charset=utf-8" />
+<meta name="Servicios" content="Geany 1.23.1" />
+</head>
+<body>
+<div style='display:table-row; padding: 10px;'>
+<div style='float: left; width=20%; padding:10px;'>
+<img src='./imagenes/logo.png'/></br></br></br>
+</div>
+<div style='float: left;padding:10px'>
+<ul>
+<li><b>Sistemas Operativos</b>
+<li><b>Puppet</b>
+<li><b>Componentes del grupo:</b> <i>Victor y Neftalí</i></li>
+<li><b>Curso Acad&eacute;mico:</b> <i>2014/2015</i></li>
+<li><b>Fecha de entrega:</b> </li>
+</ul>
+</div>
+</div>
+<div style='float: clear;background-color: #eeeeee; border:2px solid; border-radius:10px; padding: 10px;'>
+<center><a href='#bloque1'>HostLinux1</a> | <a href='#bloque2'>HostLinux2</a> | <a href='#bloque3'>Windows</a> </center>
+</div>
+<center><h1><a id='bloque1'></a>HostLinux1</h1></center><br><br>
+<center><p>Configuramos IP estática en el cliente.</p></center>
+<center><img src='./imagenes/1.png'/><center></br></br></br>
+<center><p>Configuramos el archivo /etc/resolv.conf con el nombre del grupo y el servidor DNS</p></center>
+<center><img src='./imagenes/2.png'/></center></br></br></br>
+<center><p>Configuramos el nombre del equipo en el archivo /etc/hostname</p></center>
+<center><img src='./imagenes/3.png'/></center></br></br></br>
+<center><p>Añadimos los equipos y sus IP al archivo /etc/hosts</p></center>
+<center><img src='./imagenes/4.png'/></center></br></br></br>
+<center><p>Comprobamos que la configuración esta funcionando.</p></center>
+<center><img src='./imagenes/5.png'/></center></br></br></br>
+<center><p>Ahora realizaremos los mismos pasos en el servidor, empezando por configurar la IP estática.</p></center>
+<center><img src='./imagenes/master/1.png'/></center></br></br></br>
+<center><p>Lo siguiente será el nombre del equipo</p></center>
+<center><img src='./imagenes/master/2.png'/></center></br></br></br>
+<center><p>Tambien añadiremos los equipos y las IP al archivo /etc/hosts.</p></center>
+<center><img src='./imagenes/master/3.png'/></center></br></br></br>
+<center><p>Nuevamente desde el cliente, instalamos el puppet.</p></center>
+<center><img src='./imagenes/6.png'/></center></br></br></br>
+<center><p>En el archivo /etc/puppet/puppet.conf añadiremos la linea "server=master.startrek" para que el cliente reconozca el servidor.</p></center>
+<center><img src='./imagenes/7.png'/></center></br></br></br>
+<center><p>Luego, en el archivo /etc/default/puppet modificamos la linea "start puppet on boot" cambiamos No por Yes para que el servicio puppet se ejecute al arrancar.</p></center>
+<center><img src='./imagenes/8.png'/></center></br></br></br>
+<center><p>De nuevo en el servidor, instalamos Puppet.</p></center>
+<center><img src='./imagenes/master/4.png'/></center></br></br></br>
+<center><p>Creamos una nueva cuenta puppet</p></center>
+<center><img src='./imagenes/master/6.png'/></center></br></br></br>
+<center><p>Comprobamos que ambas maquinas se hacen ping entre ellas.</p></center>
+<center><img src='./imagenes/master/7.png'/></center></br></br>
+<center><p>Realizamos la instalación de Puppetmaster.</p></center>
+<center><img src='./imagenes/master/10.png'/></center></br></br></br>
+<center><p>Creamos los archivos de configuración.</p></center>
+<center><img src='./imagenes/master/11.png'/></center></br></br></br>
+<center><p>Añadimos dentro del archivo /etc/puppet/manifests/site.pp el contenido que lleva</p></center>
+<center><img src='./imagenes/master/12.png'/></center></br></br></br>
+<center><p>Hacemos lo mismo para el archivo "hostlinux1.pp" que contiene la información de lo que se va a instalar en la maquina cliente.</p></center> 
+<center><img src='./imagenes/master/13.png'/></center></br></br></br>
+<center><p>Comprobamos en el servidor que el cliente esta solicitando conexión.</p></center>
+<center><img src='./imagenes/master/14.png'/></center></br></br></br>
+<center><p>Con este comando intercambiamos los certificados con el cliente.</p></center>
+<center><img src='./imagenes/master/15.png'/></center></br></br></br>
+<center><p>Comprobamos que el intercambio de claves se ha realizado con exito.</p></center>
+<center><img src='./imagenes/master/16.png'/></center></br></br></br>
+<center><p>Volvemos a la maquina cliente y ejecutamos el comando "puppet agent --server master.startrek --test". Si todos los pasos anteriores estan bien, se deberían instalar los programas en la maquina cliente.</p></center>
+<center><img src='./imagenes/9.png'/></center></br></br></br>
+
+
+<center><h1><a id='bloque2'></a>HosLinux2</h1></center><br><br>
+
+
+<center><p>Para el hostlinux2 modificaremos el archivo "/etc/hosts" y donde aparece cliente1 lo cambiaremos a cliente2.</p></center>
+<center><img src='./imagenes/10.png'/></center></br></br></br>
+<center><p>Tambien le cambiaremos el nombre en el archivo "/etc/hostname"</p></center>
+<center><img src='./imagenes/11.png'/></center></br></br></br>
+<center><p>Modificamos el archivo "site.pp" para que el archvio de configuración sea "hostlinux2.pp"</p></center>
+<center><img src='./imagenes/master/19.png'/></center></br></br></br>
+<center><p>Creamos el archivo "hostlinux2.pp" con su configuración para el cliente.</p></center>
+<center><img src='./imagenes/master/18.png'/></center></br></br></br>
+<center><p>Una vez realizada la configuración en el servidor, ejecutamos este comando desde el cliente y comprobamos que funcione "puppet agent --server master.startrek --test".</p></center>
+<center><img src='./imagenes/12.png'/></center></br></br></br>
+
+
+<center><h1><a id='bloque3'></a>Windows</h1></center><br><br>
+
+<center><p>Creamos el archivo hostwindows.pp con la siguiente configuración</p></center>
+<center><img src='./imagenes/master/23.png'/></center></br></br></br>
+<center><p>Modificamos el archivo hosts del cliente de Windows con la siguiente configuración.</p></center>
+<center><img src='./imagenes/13.png'/></center></br></br></br>
+<center><p>Instalamos Puppet en el cliente, tiene que coincidir con la misma versión del servidor.</p></center>
+<center><img src='./imagenes/14.png'/></center></br></br></br>
+<center><p>Comprobamos la configuración de Puppet en la maquina del cliente con estos comandos.</p></center>
+<center><img src='./imagenes/16.png'/></center></br></br></br>
+<center><p>Comprobamos la petición del cliente Windows en la maquina del servidor.</p></center>
+<center><img src='./imagenes/master/24.png'/></center></br></br></br>
+<center><p>Después de aceptar el intercambio, comprobamos que las maquinas se han intercambiado los certificados correctamente.</p></center>
+<center><img src='./imagenes/master/25.png'/></center></br></br></br>
+<center><p>Al comprobar en la maquina cliente con el comando "puppet agent --server master.startrek --test" aparece el siguiente error. No se puede finalizar la practica porque la maquina cliente parece que no encuentra el certificado.</p></center>
+<center><img src='./imagenes/17.png'/></center></br></br></br>
+</body>
+</html>
