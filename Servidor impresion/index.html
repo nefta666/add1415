@@ -1,0 +1,67 @@
+<html>
+<head>
+<title>Creación de un Servicio</title>
+<meta http-equiv="content-type" content="text/html;charset=utf-8" />
+<meta name="Servicios" content="Geany 1.23.1" />
+</head>
+<body>
+<div style='display:table-row; padding: 10px;'>
+<div style='float: left; width=20%; padding:10px;'>
+<img src='./imagenes/logo.png'/></br></br></br>
+</div>
+<div style='float: left;padding:10px'>
+<ul>
+<li><b>Sistemas Operativos</b>
+<li><b>Servidor de Impresión</b>
+<li><b>Componentes del grupo:</b> <i>Neftalí</i></li>
+<li><b>Curso Acad&eacute;mico:</b> <i>2014/2015</i></li>
+<li><b>Fecha de entrega:20/01/2015</b> </li>
+</ul>
+</div>
+</div>
+<div style='float: clear;background-color: #eeeeee; border:2px solid; border-radius:10px; padding: 10px;'>
+<center><a href='#bloque1'>Impresora compartida en red local</a> | <a href='#bloque2'>Acceso Web</center>
+</div>
+<center><h1><a id='bloque1'></a>Impresora compartida en red local</h1></center><br><br>
+
+<center><p>Primero, daremos una ip estática al servidor de impresión.</p></center>
+<center><img src='./imagenes/1.png'/><center></br></br></br>
+<center><p>Descargaremos e instalaremos el PDFCreator para crear la impresora ficticia y compartirla con el cliente.</p></center>
+<center><img src='./imagenes/2.png'/></center></br></br></br>
+<center><img src='./imagenes/3.png'/></center></br></br></br>
+<center><p>Desde el Administrador del Servidor, instalamos Active Directory en el servidor de impresión.</p></center>
+<center><img src='./imagenes/4.png'/></center></br></br></br>
+<center><p>Creamos un nuevo arbol y le ponemos un nombre.</p></center>
+<center><img src='./imagenes/5.png'/></center></br></br></br>
+<center><p>Indicamos el nivel funcional que tendra el arbol y el dominio</p></center>
+<center><img src='./imagenes/6.png'/></center></br></br></br>
+<center><img src='./imagenes/7.png'/></center></br></br></br>
+<center><p>Continuamos con el asistente hasta finalizar la instalación de Active Directory.</p></center>
+<center><img src='./imagenes/9.png'/></center></br></br></br>
+<center><p>Terminada la instalación de Active Directory, nos dirigimos al panel de control/Impresoras y añadimos una nueva impresora PDFCreator. Hacemos click derecho sobre las propiedades de la impresora y en la pestaña Compartir activamos la opción compartir impresora y le asignamos el nombre que verán los clientes.</p></center>
+<center><img src='./imagenes/10.png'/></center></br></br></br>
+<center><p></p>Nos aseguramos que está configurada en el puerto de PDFCreator.</center>
+<center><img src='./imagenes/11.png'/></center></br></br></br>
+<center><p></p>Nos dirigiremos de nuevo al Administrador del Servidor, y agregaremos una nueva función. La de servicios de impresión.</center>
+<center><img src='./imagenes/13.png'/></center></br></br></br>
+<center><p>Para el servicio de impresión, instalaremos las funciones de servidor de impresion e impresión en Internet y continuamos.</p></center>
+<center><img src='./imagenes/14.png'/></center></br></br></br>
+<center>El asistente configurará automáticamente los paquetes que se han de instalar, continuamos para completar la instalación. Reiniciaremos el servidor para que se terminen de instalar el servidor de impresión y Active Directory.<p></p></center>
+<center><img src='./imagenes/15.png'/></center></br></br></br>
+
+<center><h1><a id='bloque2'></a>Acceso Web</h1></center><br><br>
+
+<center><p>Ya en el cliente, modificaremos el archivo hosts para añadir la ip del servidor de impresión y el nombre con el que accederemos (en nuestro caso server).</p></center>
+<center><img src='./imagenes/16.png'/></center></br></br></br>
+<center><p>Una vez hecho, accederemos al servidor escribiendo en el navegador la dirección "server/printers". Una vez ahi, en la pestaña "Todas las impresoras" copiamos la dirección de la impresora que hemos compartido previamente en el servidor.</p></center>
+<center><img src='./imagenes/17.png'/></center></br></br></br>
+<center><p>Con la dirección de la impresora copiada, vamos al panel de control/impresoras y añadimos una impresora en red nueva, seleccionamos la opción de buscar impresora por nombre o dirección IP. Seleccionamos la segunda opción y pulsamos en examinar. Buscamos el servidor y luego escogemos la impresora que deseamos agregar.</p></center>
+<center><img src='./imagenes/19.png'/></center></br></br></br>
+<center>Al seleccionar la impresora, se nos preguntará si queremos instalar los drivers y si confiamos en la impresora antes de hacerlo. Pulsamos en instalar controlador.<p></p></center>
+<center><img src='./imagenes/20.png'/></center></br></br></br>
+<center><p>Una vez se termine de instalar, haremos click en imprimir pagina de prueba y finalizamos.</p></center>
+<center><img src='./imagenes/21.png'/></center></br></br></br>
+<center><p>Nos dirigimos de nuevo via web al servidor de impresión para comprobar que se ha recibido la petición de impresión de la pagina de prueba.</p></center>
+<center><img src='./imagenes/22.png'/></center></br></br></br>
+</body>
+</html>
