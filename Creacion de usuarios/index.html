@@ -1,0 +1,55 @@
+<html>
+<head>
+<title>Integración de Sistemas</title>
+<meta http-equiv="content-type" content="text/html;charset=utf-8" />
+<meta name="Sistemas Operativos" content="Geany 1.23.1" />
+</head>
+<body>
+<div style='display:table-row; padding: 10px;'>
+<div style='float: left; width=20%; padding:10px;'>
+<img src='./imagenes/logo.png'/></br></br></br>
+</div>
+<div style='float: left;padding:10px'>
+<ul>
+<li><b>Sistemas Operativos</b>
+<li><b>Componentes del grupo:</b> <i>Neftalí</i></li>
+<li><b>Curso Acad&eacute;mico:</b> <i>2014/2015</i></li>
+<li><b>Fecha de entrega:X</b> </li>
+</ul>
+</div>
+</div>
+<div style='float: clear;background-color: #eeeeee; border:2px solid; border-radius:10px; padding: 10px;'>
+<center><a href='#bloque1'>Instalación y configuración</a>
+</div>
+<center><h1><a id='bloque1'></a>Instalación y configuración</h1></center><br><br>
+<center><p>Descargamos Gawk y lo instalamos</p></center>
+<center><img src='./imagenes/1.jpg'/><center></br></br></br>
+<center><p></p></center>
+<center><img src='./imagenes/2.png'/></center></br></br></br>
+<center><p>Al terminar la instalación modificamos la variable PATH desde propiedades del sistema/Variables de entorno. Añadimos la ruta "C:\Program Files\GnuWIN32\bin;" de esta manera podremos usa Gawk desde cualquier ruta en la consola de Windows.</p></center>
+<center><img src='./imagenes/3.png'/></center></br></br></br>
+<center><p>Luego descargamos xCacls.vbs y lo descomprimimos en C:\Windows</p></center>
+<center><img src='./imagenes/4.png'/></center></br></br></br>
+<center><p>Lo editamos con un editor de texto y añadimos "6.0", "6.1" en la linea que se ve a continuación para hacerlo compatible con WS2008 y WS2008 R2.</p></center>
+<center><p></p></center>
+<center><img src='./imagenes/6.png'/></center></br></br></br>
+<center><p>Ejecutamos los siguientes comandos para cambiar el motor de secuencias de comando a CSript, lo hacemos porque xCacls trabaja mejor con este.</p></center>
+<center><img src='./imagenes/7.png'/></center></br></br></br>
+<center><p></p></center>
+<center><img src='./imagenes/8.png'/></center></br></br></br>
+<center><p>Creamos la Carpeta1 en C:</p></center>
+<center><img src='./imagenes/9.png'/></center></br></br></br>
+<center><p>Comprobamos sus permisos</p></center>
+<center><img src='./imagenes/10.png'/></center></br></br></br>
+<center><p>Creamos el archivo "usuarios.csv" con la información de los usuarios que se van a crear.</p></center>
+<center><img src='./imagenes/11.png'/></center></br></br></br>
+<center><p>Creamos el archivo "alta.awk" con el script de creación de usuarios y de las unidades organizativas.</p></center>
+<center><img src='./imagenes/15.png'/></center></br></br></br>
+<center><p>Abrimos una consola de comandos y desde ella nos movemos a la carpeta C:\, una vez ahí ejecutamos el comando "awk -f alta.awk usuarios.csv" con este comando se crea el archivo "crear.bat" que sera el que cree los usuarios y las unidades organizativas.</p></center>
+<center><img src='./imagenes/12.png'/></center></br></br></br>
+<center><p>Antes de ejecutar "crear.bat" deberemos crear manualmente la unidad organizativa Formacion Profesional desde Usuarios y equipos de Active Directory, ya que no se crean automaticamente.</p></center>
+<center><img src='./imagenes/13.png'/></center></br></br></br>
+<center><p>Una vez hecho, ejecutamos "crear.bat" y comprobamos como se van creando los usuarios y se incluyen dentro de los grupos.</p></center>
+<center><img src='./imagenes/14.png'/></center></br></br></br>
+</body>
+</html>
