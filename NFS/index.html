@@ -1,0 +1,85 @@
+<html>
+<head>
+<title>NFS</title>
+<meta http-equiv="content-type" content="text/html;charset=utf-8" />
+<meta name="Sistemas Operativos" content="Geany 1.23.1" />
+</head>
+<body>
+<div style='display:table-row; padding: 10px;'>
+<div style='float: left; width=20%; padding:10px;'>
+<img src='./imagenes/logo.png'/></br></br></br>
+</div>
+<div style='float: left;padding:10px'>
+<ul>
+<li><b>Sistemas Operativos</b>
+<li><b></b>
+<li><b>Componentes del grupo:</b> <i>Neftalí</i></li>
+<li><b>Curso Acad&eacute;mico:</b> <i>2014/2015</i></li>
+<li><b>Fecha de entrega:X</b> </li>
+</ul>
+</div>
+</div>
+<div style='float: clear;background-color: #eeeeee; border:2px solid; border-radius:10px; padding: 10px;'>
+<center><a href='#bloque1'>NFS Bajo Windows</a> | <a href='#bloque2'>NFS Bajo Linux</center>
+</div>
+<center><h1><a id='bloque1'></a>NFS Bajo Windows</h1></center><br><br>
+<center><p>Primero, en la máquina servidor, configuraremos la IP y el nombre del equipo</p></center>
+<center><img src='./imagenes/0.png'/><center></br></br></br>
+<center><p>Luego abriremos el Administrador del servidor y agregamos la funcion servicios de archivo.</p></center>
+<center><img src='./imagenes/1.png'/><center></br></br></br>
+<center><p>Nos aseguramos que se instalen las caracteristicas que aparecen en la siguiente pantalla. Continuamos con la instalación hasta completarla.</p></center>
+<center><img src='./imagenes/2.png'/></center></br></br></br>
+<center><p>Una vez se complete la instalación. Abrimos una consola de comandos y ejecutamos "nfsadmin client start"</p></center>
+<center><img src='./imagenes/3.png'/></center></br></br></br>
+<center><p>Una vez hecho esto, nos dirigimos a C:\ y ahí creamos la carpeta "export". Colgando de ella creamos "public" y "private". Cuando las hayamos creado
+abriremos las propiedades de la carpeta y en la pestaña "Uso compartido de NFS" activamos "compartir esta carpeta". Compartiremos "public" con permisos de lectura 
+y escritura y "private" solo con lectura.</p></center>
+<center><img src='./imagenes/4.png'/></center></br></br></br>
+<center><p>Como incidencia en la práctica, hay que destacar que no las carpetas se pudieron montar pero no se pudo ver su contenido ya que daba problemas con el S.O. (Windows Server 2008) no era el R2.</p></center>
+<center><img src='./imagenes/5.png'/></center></br></br></br>
+<center><p>Cuando hayamos compartido las carpetas ya podremos dirigirnos al cliente e instalar el cliente NFS desde "Agregar o quitar programas/Agregar o desactivar caracteristicas de Windows".</p></center>
+<center><img src='./imagenes/6.png'/></center></br></br></br>
+<center><p>Cuando se haya instalado, lo volvemos activar desde la consola de comandos escribiendo "nfsadmin client start".</p></center>
+<center><img src='./imagenes/7.png'/></center></br></br></br>
+<center><p>Ahora ya podremos montar las carpetas compartidas por el servidor mediante los comandos que se muestran en las siguientes capturas. Se haran practicamente igual para las dos
+variando solo las rutas en las que se van a montar en el equipo local, el nombre de la carpeta remota, la letra que le asignaremos a la unidad en el equipo local, y en el caso de private le añadiremos "r" ya que se montara en modo solo lectura.</p></center>
+<center><img src='./imagenes/8.png'/></center></br></br></br>
+<center><p>Estas capturas se realizaron montando carpetas del servidor de un compañero por el problema antes citado.</p></center>
+<center><img src='./imagenes/9.png'/></center></br></br></br>
+<center><h1><a id='bloque2'></a>NFS en Linux</h1></center><br><br>
+
+
+<center><p>Comenzamos configurando el servidor con IP estática. Tambien modificaremos el archivo resolv.conf y añadiremos la puerta de enlace, en nuestro caso 172.16.1.1.</p></center>
+<center><img src='./imagenes/11.png'/></center></br></br></br>
+<center><p>Luego, modificaremos el archivo "etc/hosts" y añadimos las IP y nombre de los equipos.</p></center>
+<center><img src='./imagenes/13.png'/></center></br></br></br>
+<center><p>Modificamos el archivo "/etc/apt/sources.list" para comentar los repositorios del CD de Debian.</p></center>
+<center><img src='./imagenes/14.png'/></center></br></br></br>
+<center><p>Actualizamos los repositorios y luego instalamos NFS con el siguiente comando.</p></center>
+<center><img src='./imagenes/16.png'/></center></br></br></br>
+<center><p>Ahora crearemos las carpetas que vamos a compartir. Les asignaremos como propietario ningun grupo o usuario y les asignaremos permisos 770. Haremos lo mismo para ambas carpetas.</p></center>
+<center><img src='./imagenes/17.png'/></center></br></br></br>
+<center><p>Cuando lo hayamos hecho, modificaremos el archivo "/etc/exports" para añadir las dos lineas que aparecen sin comentar.
+En ellas se configuran las carpetas que se van a compartir, con quien y con que tipos de permisos.</p></center>
+<center><img src='./imagenes/18.png'/></center></br></br></br>
+<center><p>Reiniciamos el servicio NFS y luego ejecutamos "showmount -e localhost" para mostrar los directorios que se estan exportando.</p></center>
+<center><img src='./imagenes/19.png'/></center></br></br></br>
+<center><p></p></center>
+<center><img src='./imagenes/20.png'/></center></br></br></br>
+<center><p>Nos dirigimos al cliente OpenSuse. Este se configura por entorno gráfico o no se encontró la manera de configurarlo por terminal.
+ Por entorno gráfico no cogía la configuración y se optó por configurarlo en IP dinámica. </p></center>
+<center><img src='./imagenes/15.png'/></center></br></br></br>
+
+<center><p>OpenSuse ya trae su propio cliente de NFS asi que no fue necesario su instalación. 
+Lo ejecutamos desde Yast y en el colocamos la IP del servidor y la ruta remota del directorio compartido. En punto de montaje local seleccionamos la ruta donde queremos que se monte el directorio. </p></center>
+<center><img src='./imagenes/21.png'/></center></br></br></br>
+<center><p>Repetimos el mismo proceso para el directorio "private"</p></center>
+<center><img src='./imagenes/22.png'/></center></br></br></br>
+<center><p>Nos dirigimos al directorio "public" y nos aseguramos que podemos escribir en el.</p></center>
+<center><img src='./imagenes/23.png'/></center></br></br></br>
+<center><p>Para poder montar el directorio "private" antes es necesario desmontar el directorio "public". 
+Por alguna razón, OpenSuse no puede tener montados dos directorios NFS al mismo tiempo.</p></center>
+<center><img src='./imagenes/24.png'/></center></br></br></br>
+
+</body>
+</html>
