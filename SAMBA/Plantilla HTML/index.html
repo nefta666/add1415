@@ -1,0 +1,118 @@
+<html>
+<head>
+<title>Compartir carpetas en Samba</title>
+<meta http-equiv="content-type" content="text/html;charset=utf-8" />
+<meta name="Servicios" content="Geany 1.23.1" />
+</head>
+<body>
+<div style='display:table-row; padding: 10px;'>
+<div style='float: left; width=20%; padding:10px;'>
+<img src='./imagenes/logo.png'/></br></br></br>
+</div>
+<div style='float: left;padding:10px'>
+<ul>
+<li><b>Sistemas Operativos</b>
+<li><b>Componentes del grupo:</b> <i>Neftalí</i></li>
+<li><b>Curso Acad&eacute;mico:</b> <i>2014/2015</i></li>
+<li><b>Fecha de entrega:X</b> </li>
+</ul>
+</div>
+</div>
+<div style='float: clear;background-color: #eeeeee; border:2px solid; border-radius:10px; padding: 10px;'>
+<center><a href='#bloque1'>Cliente Windows</a> | <a href='#bloque2'>Cliente Linux</center>
+</div>
+
+
+
+<center><h1><a id='bloque1'></a>Cliente Windows</h1></center><br><br>
+
+
+<center><p>Lo primero que deberemos hacer será configurar el servidor con IP estática. Faltó la captura en la que se viera el contenido del archivo /etc/network/interfaces.
+La IP del equipo es 172.16.108.219</p></center>
+<center><img src='./imagenes/1.png'/><center></br></br></br>
+<center><p>Luego configuramos el nombre del equipo desde el archivo /etc/hostname.</p></center>
+<center><img src='./imagenes/2.png'/></center></br></br></br>
+<center><p>Una vez hayamos hecho estos cambios previos, instalamos openssh-server desde apt-get.</p></center>
+<center><img src='./imagenes/3.png'/></center></br></br></br>
+<center><p>Lo siguiente será añadir los grupos de usuarios panaderos e informaticos.</p></center>
+<center><img src='./imagenes/4.png'/></center></br></br></br>
+<center><p>Tambien crearemos los usuarios info1, info2 y supersamba que añadiremos al grupo de informaticos. Al grupo de panaderos añadiremos supersamba, pan1 y pan2 que deberemos crear. Tambien crearemos el usuario smbguest que quedará como usuario invitado.</p></center>
+<center><img src='./imagenes/5.png'/></center></br></br></br>
+<center><img src='./imagenes/6.png'/></center></br></br></br>
+<center><p>Comprobamos en el archivo /etc/group que los usuarios se han añadido a los grupos correctamente.</p></center>
+<center><img src='./imagenes/7.png'/></center></br></br></br>
+<center><p>Y en el archivo /etc/passwd comprobamos que se han creado adecuadamente.</p></center>
+<center><img src='./imagenes/8.png'/></center></br></br></br>
+<center><p>A continuación, instalamos Samba desde apt-get.</p></center>
+<center><img src='./imagenes/10.png'/></center></br></br></br>
+<center><p>Una vez instalado, nos dirigimos a /etc/samba y renombramos el archivo de configuración de Samba "smb.conf" con otro nombre.</p></center>
+<center><img src='./imagenes/11.png'/></center></br></br></br>
+<center><p>Creamos un archivo con el nombre original que acabamos de renombrar e introducimos los siguientes datos en el.</p></center>
+<center><img src='./imagenes/12.png'/></center></br></br></br>
+<center><p>Creamos el directorio samba colgando de /var con los directorios informaticos, panaderos y public en su interior.</p></center>
+<center><img src='./imagenes/13.png'/></center></br></br></br>
+<center><p>Le asignamos permisos 770 a cada directorio, le cambiamos el propietario del directorio para cada uno a supersamba, y para cada directorio, le asignamos el mismo grupo que el del nombre del directorio (Ej: para el directorio panaderos el grupo propietario panaderos)</p></center>
+<center><img src='./imagenes/14.png'/></center></br></br></br>
+<center><p>Una vez creados los directorios, daremos a cada usuario un password de acceso a samba con el comando "smbpasswd -a nombreusuario"</p></center>
+<center><img src='./imagenes/15.png'/></center></br></br></br>
+<center><p>Comprobamos la lista de usuarios de Samba.</p></center>
+<center><img src='./imagenes/16.png'/></center></br></br></br>
+<center><p>Completado todo el proceso, reiniciamos el servicio Samba y ya podremos pasar al cliente.</p></center>
+<center><img src='./imagenes/17.png'/></center></br></br></br>
+<center><p>Arrancamos el cliente Windows y lo configuramos en la misma red que el servidor. Una vez hecho abrimos una carpeta cualquiera y en ella, en la barra de direcciones escribimos la ruta del servidor. Veremos una pantalla como esta. Al acceder a la carpeta panaderos, se nos solicita la clave de acceso. Colocamos la del usuario pan1.</p></center>
+<center><img src='./imagenes/18.png'/></center></br></br></br>
+<center><p>Comprobamos que tenemos acceso al directorio compartido panaderos y que podemos escribir en el.</p></center>
+<center><img src='./imagenes/19.png'/></center></br></br></br>
+<center><p>Probamos lo mismo, pero esta vez para el directorio compartido de informaticos.</p></center>
+<center><img src='./imagenes/20.png'/></center></br></br></br>
+<center><p>Como se muestra en la captura de pantalla, tenemos acceso y el usuario info1 puede escribir en el.</p></center>
+<center><img src='./imagenes/21.png'/></center></br></br></br>
+
+<center><h1><a id='bloque2'></a>Cliente Linux</h1></center><br><br>
+
+<center><p>Configuramos el cliente Debian con IP estática dentro del rango de IP de la maquina servidor.</p></center>
+<center><img src='./imagenes/22.png'/></center></br></br></br>
+<center><p>Abrimos un directorio cualquiera y en la barra de direcciones escribimos la IP del servidor. Veremos los directorios compartidos por este.</p></center>
+<center><img src='./imagenes/23.png'/></center></br></br></br>
+<center><p>Accedemos al directorio de informaticos y se nos pedirá el nombre de usuario y contraseña. Introducimos la de info1.</p></center>
+<center><img src='./imagenes/24.png'/></center></br></br></br>
+<center><p>Comprobamos que podemos acceder al recurso compartido.</p></center>
+<center><img src='./imagenes/25.png'/></center></br></br></br>
+<center><p>Haremos lo mismo con el directorio panaderos</p></center>
+<center><img src='./imagenes/26.png'/></center></br></br></br>
+<center><p>Comprobamos una vez mas, que tambien tenemos acceso.</p></center>
+<center><img src='./imagenes/27.png'/></center></br></br></br>
+<center><p>Accedemos a public y comprobamos que no nos pide ninguna credencial para acceder, pero no podremos escribir en el directorio porque tiene permiso de solo lectura.</p></center>
+<center><img src='./imagenes/28.png'/></center></br></br></br>
+<center><p>Desde el servidor Samba ejecutamos el comando "netstat -ntap" para comprobar los accesos a los recursos compartidos.</p></center>
+<center><img src='./imagenes/29.png'/></center></br></br></br>
+<center><p>Nuevamente desde el cliente, ejecutamos el comando "smbtree" para ver los servidores samba de nuestra red</p></center>
+<center><img src='./imagenes/30.png'/></center></br></br></br>
+<center><p>Para ver los recursos compartidos por el el servidor ejecutaremos el comando "smbclient --list ipdelservidor"</p></center>
+<center><img src='./imagenes/31.png'/></center></br></br></br>
+<center><p>Para montar los recursos de Samba desde la terminal, primero debemos crear los directorios locales donde se montarán. Lo haremos en /mnt/samba-remoto.</p></center>
+<center><img src='./imagenes/32.png'/></center></br></br></br>
+<center><p>Una vez hayamos creado los directorios locales, ejecutaremos el comando que se muestra a continuación para montar el recurso panaderos en la ruta local para panaderos que hemos creado previamente, identificandonos con el usuario pan1. Al ejecutar el comando se nos requerirá el password para dicho usuario.</p></center>
+<center><img src='./imagenes/33.png'/></center></br></br></br>
+<center><p>Comprobamos mediante df -hT que el recurso ha sido correctamente montado.</p></center>
+<center><img src='./imagenes/34.png'/></center></br></br></br>
+<center><p>Haremos lo mismo, pero esta vez para el recurso compartido de informaticos, cambiando la ruta local e identificandonos con el usuario info1. Nos solicitará nuevamente el password para el usuario. Comprobamos que se ha montado.</p></center>
+<center><img src='./imagenes/35.png'/></center></br></br></br>
+<center><p>Por ultimo, montaremos el recurso public, en su ruta local y esta vez, como usuario nos autenticaremos con el usuario smbguest. Introducimos la contraseña y comprobamos el montaje del directorio.</p></center>
+<center><img src='./imagenes/38.png'/></center></br></br></br>
+<center><p>Una vez hayamos montado los 3 recursos, entramos a uno al cual tengamos permiso de escritura, en este caso informaticos y comprobamos que podemos escribir en el.</p></center>
+<center><img src='./imagenes/36.png'/></center></br></br></br>
+<center><p>En el servidor, comprobamos que el usuario ha escrito en el directorio.</p></center>
+<center><img src='./imagenes/37.png'/></center></br></br></br>
+<center><p>Ejecutamos desde el servidor los comandos smbstatus y netstat -ntap para comprobar los usuarios que han accedido a los recursos por samba y desde que IP</p></center>
+<center><img src='./imagenes/39.png'/></center></br></br></br>
+<center><p></p></center>
+<center><img src='./imagenes/40.png'/></center></br></br></br>
+<center><p>En la siguiente captura, se pueden ver como los tres recursos se han montado correctamente. Pero al reiniciar la maquina no se montarán automaticamente, pasaremos a configurar el automontaje.</p></center>
+<center><img src='./imagenes/42.png'/></center></br></br></br>
+<center><p>Editamos el archivo /etc/fstab, añadimos una linea por cada recurso compartido. Quedando de la siguiente manera. (NOTA: en la imagen el archivo fstab esta mal configurado ya que los separadores estan con tabuladores y no funcionaba, habia que cambiarlo a espacios. Se corrigió pero no se actualizo la captura de pantalla)</p></center>
+<center><img src='./imagenes/43.png'/></center></br></br></br>
+<center><p>Guardamos el archivo /etc/fstab y reiniciamos la máquina, al reiniciar comprobamos mediante df -hT que los recursos compartidos se han montado automáticamente.</p></center>
+<center><img src='./imagenes/44.png'/></center></br></br></br>
+</body>
+</html>
