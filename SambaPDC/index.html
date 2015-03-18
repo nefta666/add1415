@@ -1,0 +1,63 @@
+<html>
+<head>
+<title>Samba como controlador de Dominio</title>
+<meta http-equiv="content-type" content="text/html;charset=utf-8" />
+<meta name="Servicios" content="Geany 1.23.1" />
+</head>
+<body>
+<div style='display:table-row; padding: 10px;'>
+<div style='float: left; width=20%; padding:10px;'>
+<img src='./imagenes/logo.png'/></br></br></br>
+</div>
+<div style='float: left;padding:10px'>
+<ul>
+<li><b>Sistemas Operativos</b>
+<li><b>Componentes del grupo:</b> <i>Neftalí</i></li>
+<li><b>Curso Acad&eacute;mico:</b> <i>2014/2015</i></li>
+<li><b>Fecha de entrega:X</b> </li>
+</ul>
+</div>
+</div>
+<div style='float: clear;background-color: #eeeeee; border:2px solid; border-radius:10px; padding: 10px;'>
+
+</div>
+
+<center><p>Comenzamos instalando Samba en la maquina cliente.</p></center>
+<center><img src='./imagenes/1.png'/><center></br></br></br>
+<center><p>Configuramos el nombre del equipo servidor</p></center>
+<center><img src='./imagenes/2.png'/></center></br></br></br>
+<center><p>Luego renombramos el archivo de configuración de Samba por seguridad y creamos otro nuevo.</p></center>
+<center><img src='./imagenes/3.png'/></center></br></br></br>
+<center><p>Rellenamos el archivo de configuración de la siguiente manera</p></center>
+<center><img src='./imagenes/4.png'/></center></br></br></br>
+<center><p></p></center>
+<center><img src='./imagenes/5.png'/></center></br></br></br>
+<center><p>A continuación, configuramos la maquina servidor mediante IP estática.</p></center>
+
+<center><img src='./imagenes/6.png'/></center></br></br></br>
+<center><p>Modificamos el archivo resolv.conf para añadir el nombre del dominio y el DNS.</p></center>
+<center><img src='./imagenes/7.png'/></center></br></br></br>
+<center><p>Una vez hecho, crearemos los directorios netlogon y profiles en la ruta /var/lib/samba</p></center>
+<center><img src='./imagenes/8.png'/></center></br></br></br>
+<center><p>Tambien crearemos el directorio samba/var dentro de /usr/local</p></center>
+<center><img src='./imagenes/9.png'/></center></br></br></br>
+<center><p>Creamos el grupo machines, las cuentas de maquina client3 y client4, las añadimos al grupo machines y modificamos la caducidad de su contraseña</p></center>
+<center><img src='./imagenes/10.png'/></center></br></br></br>
+<center><p>Añadimos los siguientes usuarios</p></center>
+<center><img src='./imagenes/11.png'/></center></br></br></br>
+<center><p></p></center>
+<center><img src='./imagenes/12.png'/></center></br></br></br>
+<center><p>Modificamos la caducidad de las contraseñas de los usuarios.</p></center>
+<center><img src='./imagenes/13.png'/></center></br></br></br>
+<center><p>Establecemos contraseñas para cada uno de ellos</p></center>
+<center><img src='./imagenes/14.png'/></center></br></br></br>
+<center><p>Luego, crearemos los directorios de cada usuario y estableceremos al usuario como propietario del directorio.</p></center>
+<center><img src='./imagenes/15.png'/></center></br></br></br>
+<center><p>Una vez terminada la configuración del servidor, nos dirigimos al cliente. Tendremos que modificar y añadir varios valores del registro como se muestra en las pantallas de abajo. Esto solo es necesario hacerlo si nuestro cliente es W7.</p></center>
+<center><img src='./imagenes/16.png'/></center></br></br></br>
+<center><p></p></center>
+<center><img src='./imagenes/17.png'/></center></br></br></br>
+<center><p>Luego, añadimos la maquina al dominio, introducimos un usuario valido que previamente configuramos en el servidor y su contraseña. <br> NOTA: Al hacer login da salta un error de que no se pudo iniciar sesión en el dominio. No se pudo solucionar por falta de tiempo.</p></center>
+<center><img src='./imagenes/19.png'/></center></br></br></br>
+</body>
+</html>
